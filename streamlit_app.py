@@ -3,6 +3,7 @@ from pinotdb import connect
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import time
 
 conn = connect(host = '47.129.162.84', port = 8099, path = '/query/sql', schema = 'http')
 
