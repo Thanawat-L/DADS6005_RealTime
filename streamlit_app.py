@@ -153,3 +153,7 @@ with st.container():
     with col2:
         st.plotly_chart(fig_04, use_container_width=True)
 
+# Refresh logic
+if auto_refresh:
+    time.sleep(refresh_rate)
+    st.rerun()
