@@ -118,19 +118,20 @@ fig_04 = px.pie(
     labels={"GENRE": "Game Genre", "GLOBAL_SALES": "Global Sales (in millions)"},
 )
 
+# Streamlit layout
 st.set_page_config(page_title="Gundam Views Dashboard", layout="wide")
 st.title("Game Sales Analysis")
 
 # Set up auto-refresh options
 if "sleep_time" not in st.session_state:
-    st.session_state.sleep_time = 5
+    st.session_state.sleep_time = 2
 if "auto_refresh" not in st.session_state:
     st.session_state.auto_refresh = True
-
+ 
 # Create an Auto refresh Button
 auto_refresh = st.checkbox('Auto Refresh?', st.session_state.auto_refresh)
 st.session_state.auto_refresh = auto_refresh
-
+ 
 if auto_refresh:
     refresh_rate = st.number_input('Refresh rate in seconds', value=st.session_state.sleep_time, min_value=1)
     st.session_state.sleep_time = refresh_rate
@@ -139,7 +140,7 @@ else:
 
 # Create Layout
 with st.container():
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2) 
     with col1:
         st.plotly_chart(fig_01, use_container_width=True)
     with col2:
@@ -151,9 +152,4 @@ with st.container():
         st.plotly_chart(fig_03, use_container_width=True)
     with col2:
         st.plotly_chart(fig_04, use_container_width=True)
-
-# Auto-refresh logic
-if auto_refresh:
-    time.sleep(refresh_rate)
-    st.experimental_rerun()
 
