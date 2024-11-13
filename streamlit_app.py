@@ -124,7 +124,7 @@ st.title("Game Sales Analysis")
 
 # Set up auto-refresh options
 if "sleep_time" not in st.session_state:
-    st.session_state.sleep_time = 2
+    st.session_state.sleep_time = 30
 if "auto_refresh" not in st.session_state:
     st.session_state.auto_refresh = True
  
