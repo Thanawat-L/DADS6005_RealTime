@@ -121,6 +121,23 @@ fig_04 = px.pie(
 st.set_page_config(page_title="Gundam Views Dashboard", layout="wide")
 st.title("Game Sales Analysis")
 
+# Set up auto-refresh options
+if "sleep_time" not in st.session_state:
+    st.session_state.sleep_time = 2
+if "auto_refresh" not in st.session_state:
+    st.session_state.auto_refresh = True
+ 
+# Create an Auto refresh Button
+auto_refresh = st.checkbox('Auto Refresh?', st.session_state.auto_refresh)
+st.session_state.auto_refresh = auto_refresh
+ 
+if auto_refresh:
+    refresh_rate = st.number_input('Refresh rate in seconds', value=st.session_state.sleep_time, min_value=1)
+    st.session_state.sleep_time = refresh_rate
+else:
+    refresh_rate = st.session_state.sleep_time
+
+# Create Layout
 with st.container():
     col1, col2 = st.columns(2) 
     with col1:
